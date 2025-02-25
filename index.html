@@ -25,6 +25,8 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <!-- Add Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -47,31 +49,43 @@
     <main>
         <!-- Hero Section -->
         <div id="hero-section-container"></div>
+        
+        <!-- About Section -->
+        <div id="about-section-container"></div>
+
+        <!-- Videos Section -->
+        <div id="video-section-container"></div>
+        
+        <!-- Participants Section -->
+        <div id="participants-section-container"></div>
 
         <!-- Promoters Section -->
         <div id="promoters-section-container"></div>
-
-        <!-- Videos Section -->
-        <div id="videos-section-container"></div>
 
         <!-- Next Match Section -->
         <div id="next-match-section-container"></div>
 
         <!-- Podcast Section -->
         <div id="podcast-section-container"></div>
+        
+        <!-- Contact Section -->
+        <div id="contact-section-container"></div>
     </main>
 
-    <!-- Footer -->
-    <div id="footer-container"></div>
+    <!-- Footer is appended to body directly from footer.js -->
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="./scripts/main.js"></script>
     <script src="./scripts/header.js"></script>
     <script src="./scripts/heroSection.js"></script>
+    <script src="./scripts/aboutSection.js"></script>
+    <script src="./scripts/videoSection.js"></script>
+    <script src="./scripts/participantsSection.js"></script>
     <script src="./scripts/promotersSection.js"></script>
-    <script src="./scripts/videosSection.js"></script>
     <script src="./scripts/nextMatchSection.js"></script>
     <script src="./scripts/podcastSection.js"></script>
+    <!-- Footer script is at the end because it appends to body -->
     <script src="./scripts/footer.js"></script>
 </body>
 

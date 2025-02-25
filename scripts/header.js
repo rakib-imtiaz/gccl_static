@@ -1,230 +1,138 @@
 // Header component
 function createHeader() {
-    const currentPath = window.location.pathname;
-    const headerContainer = document.getElementById('header-container');
-
-    if (!headerContainer) return;
-
+    const header = document.createElement('header');
+    header.classList.add('header-fixed', 'header-transparent', 'w-full');
+    
+    // Navigation links
     const navLinks = [
-        { name: 'Home', path: '/index.html' },
-        { name: 'Players', path: '/players.html' },
-        { name: 'Matches', path: '/matches.html' },
-        { name: 'Media', path: '/media.html' },
-        { name: 'Shop', path: '/shop.html' },
+        { name: 'Home', url: '#home' },
+        { name: 'About', url: '#about' },
+        { name: 'Videos', url: '#videos' },
+        { name: 'Participants', url: '#participants' },
+        { name: 'Promoters', url: '#promoters' }
     ];
 
+    // Social links - only shown on desktop now
     const socialLinks = [
-        {
-            name: 'Facebook',
-            path: 'https://www.facebook.com/profile.php?id=100087213848585',
-            icon: '<i class="fab fa-facebook"></i>'
-        },
-        {
-            name: 'Instagram',
-            path: 'https://www.instagram.com/plastic_people_production/',
-            icon: '<i class="fab fa-instagram"></i>'
-        }
+        { icon: 'fab fa-facebook-f', url: '#' },
+        { icon: 'fab fa-twitter', url: '#' },
+        { icon: 'fab fa-instagram', url: '#' },
+        { icon: 'fab fa-youtube', url: '#' }
     ];
 
-    // Check if a path is active
-    function isActive(path) {
-        if (path === '/index.html' && (currentPath === '/' || currentPath === '/index.html')) {
-            return true;
-        }
-        return currentPath === path;
-    }
-
-    // Create the HTML for the header
-    const headerHTML = `
-        <header class="header-fixed header-transparent">
-            <div class="social-bar py-1">
-                <div class="container mx-auto px-4 flex justify-end space-x-3">
+    // Create the header content
+    const headerContent = `
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="logo-container">
+                    <a href="index.html" class="flex items-center">
+                        <img src="assets/logos/logo_gccl.png" alt="GCCL Logo" class="h-14 mr-3 drop-shadow-lg">
+                        <span class="text-xl font-bold text-white drop-shadow-md">GCCL</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    ${navLinks.map(link => `
+                        <div class="nav-item">
+                            <a href="${link.url}" class="text-white hover:text-yellow-400 font-medium">${link.name}</a>
+                        </div>
+                    `).join('')}
+                    
+                    <a href="#contact" class="bg-primary/80 hover:bg-primary text-white px-5 py-2 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all backdrop-blur-sm">
+                        Contact Us
+                    </a>
+                </nav>
+                
+                <!-- Social Icons (Desktop Only) -->
+                <div class="hidden md:flex items-center space-x-4">
                     ${socialLinks.map(link => `
-                        <a
-                            href="${link.path}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-white/90 hover:text-white transition-colors duration-200"
-                            aria-label="${link.name}"
-                        >
-                            ${link.icon}
+                        <a href="${link.url}" class="text-white hover:text-yellow-400 transition-colors drop-shadow-md">
+                            <i class="${link.icon}"></i>
                         </a>
                     `).join('')}
                 </div>
-            </div>
-            <nav class="container mx-auto px-4 py-3">
-                <div class="flex items-center justify-between">
-                    <a href="index.html" class="flex items-center space-x-2 relative">
-                        <div class="flex items-center logo-container">
-                            <img src="./assets/logos/logo_gccl.png" alt="GCCL Logo" class="h-14 w-auto" />
-                            <div class="ml-2 hidden sm:block">
-                                <span class="font-bold text-lg text-primary block leading-tight">GCCL</span>
-                                <span class="text-xs text-gray-600 block leading-tight">Est. 2023</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- Desktop Navigation -->
-                    <div class="hidden md:flex items-center space-x-8">
-                        ${navLinks.map(link => `
-                            <div class="nav-item">
-                                <a
-                                    href="${link.path}"
-                                    class="font-medium transition-colors duration-200 ${isActive(link.path)
-            ? 'text-primary border-b-2 border-primary'
-            : 'text-gray-600 hover:text-primary'
-        }"
-                                >
-                                    ${link.name}
-                                </a>
-                            </div>
-                        `).join('')}
-                        
-                        <div>
-                            <a
-                                href="contact.html"
-                                class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors duration-200"
-                            >
-                                Contact Us
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Mobile Menu Button -->
-                    <button
-                        class="menu-button md:hidden text-gray-600 hover:text-primary focus:outline-none"
-                        aria-label="Toggle menu"
-                    >
-                        <svg
-                            class="h-6 w-6"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
+                
+                <!-- Mobile Menu Toggle -->
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="text-white focus:outline-none drop-shadow-md">
+                        <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
-
-                <!-- Mobile Navigation -->
-                <div class="mobile-menu md:hidden mt-4 pb-4 border-t border-gray-200">
-                    <div class="flex flex-col space-y-4 pt-4">
-                        ${navLinks.map(link => `
-                            <a
-                                href="${link.path}"
-                                class="block font-medium ${isActive(link.path)
-                ? 'text-primary'
-                : 'text-gray-600 hover:text-primary'
-            }"
-                            >
-                                ${link.name}
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 bg-black/80 backdrop-blur-md rounded-lg">
+                <nav class="flex flex-col space-y-4 p-4">
+                    ${navLinks.map(link => `
+                        <a href="${link.url}" class="text-white hover:text-yellow-400 font-medium py-2">${link.name}</a>
+                    `).join('')}
+                    <a href="#contact" class="bg-primary/80 text-white px-5 py-3 rounded-lg font-medium text-center shadow-md">
+                        Contact Us
+                    </a>
+                    <div class="flex items-center space-x-6 justify-center mt-4 pt-4 border-t border-gray-700">
+                        ${socialLinks.map(link => `
+                            <a href="${link.url}" class="text-white hover:text-yellow-400 transition-colors">
+                                <i class="${link.icon}"></i>
                             </a>
                         `).join('')}
-                        
-                        <a
-                            href="contact.html"
-                            class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors duration-200 inline-block w-fit"
-                        >
-                            Contact Us
-                        </a>
-                        
-                        <div class="flex space-x-4 pt-2">
-                            ${socialLinks.map(link => `
-                                <a
-                                    href="${link.path}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="text-gray-600 hover:text-primary transition-colors duration-200"
-                                    aria-label="${link.name}"
-                                >
-                                    ${link.icon}
-                                </a>
-                            `).join('')}
-                        </div>
                     </div>
-                </div>
-            </nav>
-        </header>
+                </nav>
+            </div>
+        </div>
     `;
-
-    // Set the HTML
-    headerContainer.innerHTML = headerHTML;
-
-    // Setup mobile menu toggle
-    const menuButton = document.querySelector('.menu-button');
-    const mobileMenu = document.querySelector('.mobile-menu');
-
-    if (menuButton && mobileMenu) {
-        mobileMenu.style.display = 'none';
-
-        menuButton.addEventListener('click', () => {
-            const isExpanded = mobileMenu.style.display !== 'none';
-            mobileMenu.style.display = isExpanded ? 'none' : 'block';
-
-            // Change icon
-            if (isExpanded) {
-                menuButton.innerHTML = `
-                    <svg
-                        class="h-6 w-6"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                `;
+    
+    header.innerHTML = headerContent;
+    
+    // Add scroll event to change header style on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Toggle mobile menu
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (!mobileMenu.classList.contains('hidden')) {
+                menuToggle.innerHTML = '<i class="fas fa-times text-2xl"></i>';
             } else {
-                menuButton.innerHTML = `
-                    <svg
-                        class="h-6 w-6"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                `;
+                menuToggle.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
             }
         });
-    }
-
-    // Add hover effects to nav items
-    const navItems = document.querySelectorAll('.nav-item');
-
-    navItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            item.style.transform = 'translateY(-2px)';
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('header-scrolled');
+                header.classList.remove('shadow-md');
+            }
         });
-
-        item.addEventListener('mouseleave', () => {
-            item.style.transform = 'translateY(0)';
+        
+        // Add hover effect to nav items
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.querySelector('a').classList.add('text-yellow-400');
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                if (!item.querySelector('a').classList.contains('active')) {
+                    item.querySelector('a').classList.remove('text-yellow-400');
+                }
+            });
         });
     });
+    
+    return header;
+}
 
-    // Add parallax effect to logo
-    const logoContainer = document.querySelector('.logo-container');
-
-    if (logoContainer) {
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const scale = 1 - (scrollY * 0.0005 > 0.1 ? 0.1 : scrollY * 0.0005);
-            const y = scrollY * -0.03;
-
-            if (scrollY < 200) {
-                logoContainer.style.transform = `scale(${scale}) translateY(${y}px)`;
-            }
-        });
+function renderHeader() {
+    const headerContainer = document.getElementById('header-container');
+    if (headerContainer) {
+        headerContainer.appendChild(createHeader());
     }
 }
 
-// Initialize the header
-document.addEventListener('DOMContentLoaded', createHeader); 
+renderHeader(); 

@@ -119,6 +119,46 @@ window.addEventListener('resize', () => {
     // Recalculate any dimension-dependent values here
 });
 
+// Handle video loading error
+function handleVideoError() {
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+        // Create a more comprehensive error handler
+        const showFallback = () => {
+            console.log('Video failed to load or play, showing fallback background');
+            // Hide video
+            if (heroVideo) heroVideo.style.opacity = '0';
+            // Make sure the fallback background is visible
+            const fallbackBg = document.querySelector('.bg-gradient-to-br');
+            if (fallbackBg && fallbackBg.style) {
+                fallbackBg.style.zIndex = '5';
+                fallbackBg.style.opacity = '1';
+            }
+        };
+
+        // Handle various video failure scenarios
+        heroVideo.addEventListener('error', showFallback);
+        
+        // Check if the video is stalled or suspended
+        heroVideo.addEventListener('stalled', showFallback);
+        heroVideo.addEventListener('suspend', () => {
+            // Only show fallback if suspended for too long
+            setTimeout(() => {
+                if (heroVideo.readyState < 3) {
+                    showFallback();
+                }
+            }, 3000);
+        });
+        
+        // Add a timeout to check if video is playing after a few seconds
+        setTimeout(() => {
+            if (heroVideo.paused || heroVideo.readyState < 3) {
+                showFallback();
+            }
+        }, 5000);
+    }
+}
+
 // Initialize everything when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded, initializing app...');
@@ -126,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeLoader();
         setupMobileMenu();
         setupScrollAnimations();
+        handleVideoError();
 
         // Optional: Force a scroll event to initialize parallax effects
         window.dispatchEvent(new Event('scroll'));
