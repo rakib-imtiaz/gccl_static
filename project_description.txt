@@ -1,0 +1,121 @@
+### Project Structure for Building a Website Similar to KKR's Official Website
+
+Below is a detailed project structure and description for building a website similar to the Kolkata Knight Riders' official website. This structure includes best practices, component breakdowns, and instructions for an AI agent to develop the website.
+
+---
+
+## 1. Project Overview
+**Objective**: Build a modern, responsive, and visually appealing sports team website featuring:
+- Match schedules
+- Player statistics
+- Multimedia content (videos, podcasts, photo galleries)
+- Merchandise store
+- Interactive user engagement features
+
+**Key Features**:
+1. **Homepage**: Highlights team updates, match schedules, and featured players.
+2. **Player Profiles**: Detailed stats and achievements.
+3. **Match Schedules & Results**: Upcoming matches and past results.
+4. **Media Section**: Videos, podcasts, and photo galleries.
+5. **Merchandise Store**: E-commerce functionality for team products.
+6. **Interactive Features**: Fan polls, live score updates, and social media integration.
+
+---
+
+## 2. Technology Stack
+
+- **Frontend**:
+  - HTML5, CSS3 (SCSS for better styling management)
+  - JavaScript (Next.js for server-side rendering and static site generation)
+  - Tailwind CSS or Bootstrap for responsive design
+  - Vite for fast development and build tooling
+- **Backend**:
+  - Node.js with Express.js (or Django/Flask for Python-based backend)
+  - RESTful APIs for data handling
+- **Database**:
+  - MongoDB or PostgreSQL for storing player data, match schedules, and user information
+- **Hosting & Deployment**:
+  - Vercel for seamless Next.js deployment
+- **Version Control**:
+  - Git with GitHub/GitLab for collaboration
+
+---
+
+## 3. Color Palette
+Based on the analysis of the provided website screenshot:
+
+| Color Name | Hex Code    | Usage                          |
+|------------|-------------|--------------------------------|
+| White      | `#ffffff`   | Backgrounds and text contrast |
+| Purple     | `#3b225b`   | Primary theme color           |
+| Dark Purple| `#3c235c`   | Accent areas                  |
+| Light Gray | `#f9f9f9`   | Secondary backgrounds         |
+| Off White  | `#fefefe`   | Card backgrounds              |
+
+---
+
+## 4. Project Structure
+### **Frontend**
+1. **Components**:
+   - `Header`: Navigation bar with links to all sections.
+   - `Footer`: Contact info, social media links, and sponsors.
+   - `HeroSection`: Highlight key updates (e.g., latest matches).
+   - `PlayerCard`: Displays player info and stats.
+   - `MatchSchedule`: Upcoming matches with filtering options.
+   - `MediaGallery`: Video thumbnails, podcasts, and photos.
+   - `ProductCard`: Merchandise items with "Add to Cart" functionality.
+
+2. **Pages**:
+   - Homepage (`/`): Hero section, featured players, match schedules.
+   - Player Profiles (`/players/:id`): Individual player stats and bio.
+   - Match Schedules (`/matches`): List of matches with results.
+   - Media (`/media`): Videos, podcasts, photo galleries.
+   - Shop (`/shop`): Merchandise store.
+
+3. **State Management**:
+   Use Redux for managing global states like user sessions or cart items.
+
+---
+
+### **Backend**
+1. **APIs**:
+   - `/players`: Fetch player data (name, stats, bio).
+   - `/matches`: Retrieve match schedules and results.
+   - `/media`: Fetch multimedia content (videos/podcasts).
+   - `/shop`: Handle product listings and orders.
+
+2. **Database Schema**:
+   - MongoDB for storing player data, match schedules, and user information.
+
+---
+
+### **Deployment**
+1. **Hosting**:
+   - Vercel for seamless Next.js deployment
+   - AWS/GCP/Azure for scalable backend
+   - Netlify for static site hosting
+
+2. **CI/CD**:
+   - Use GitHub Actions for automated testing and deployment
+   - Implement continuous integration and continuous deployment pipelines
+
+---
+
+### **Additional Requirements**
+1. **Responsive Design**:
+   - Ensure the website is fully responsive across all devices.
+   - Use Tailwind CSS for consistent styling.
+
+2. **Performance Optimization**:
+   - Implement lazy loading for images and scripts.
+   - Minimize server-side rendering to improve performance. 
+
+---
+
+### **Documentation**
+1. **Project Documentation**:
+   - Create a README.md file with project setup instructions.
+   - Document all components and their functionalities.
+   - Provide clear instructions for setting up the development environment.
+
+---
