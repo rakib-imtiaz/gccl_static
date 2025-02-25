@@ -1,5 +1,6 @@
 # GCCL Static Website
-
+ git config --global user.email "anonyous21120620@gmail.com"
+  git config --global user.name "rakib-imtiaz"
 This is a static version of the Global Celebrity Cricket League (GCCL) website, built with HTML, CSS, and vanilla JavaScript.
 
 ## Project Structure
