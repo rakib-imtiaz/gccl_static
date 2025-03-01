@@ -5,16 +5,7 @@ function createNextMatchSection() {
     if (!nextMatchSectionContainer) return;
 
     const nextMatchSectionHTML = `
-        <section class="next-match-section py-16 sm:py-20 lg:py-24 bg-light-gray relative overflow-hidden">
-            <!-- Background Pattern -->
-            <div class="absolute inset-0 z-0 opacity-5">
-                <img 
-                    src="./assets/images/cricket-pattern.png" 
-                    alt="" 
-                    class="w-full h-full object-cover"
-                />
-            </div>
-            
+        <section class="next-match-section py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-12 sm:mb-16">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 animate-on-scroll">Next Match</h2>
@@ -23,175 +14,106 @@ function createNextMatchSection() {
                     </p>
                 </div>
                 
-                <div class="max-w-5xl mx-auto">
-                    <div class="next-match-card bg-white rounded-2xl shadow-xl overflow-hidden animate-on-scroll">
-                        <div class="grid grid-cols-1 md:grid-cols-2">
-                            <!-- Match Details -->
-                            <div class="p-6 sm:p-8 lg:p-10">
-                                <div class="flex items-center justify-between mb-6">
-                                    <span class="inline-block px-4 py-2 bg-primary-500 text-white text-sm font-semibold rounded-full">
-                                        Coming Soon
-                                    </span>
-                                    <span class="text-gray-500 text-sm">
-                                        <i class="far fa-calendar-alt mr-2"></i>May 2025
-                                    </span>
+                <div class="max-w-4xl mx-auto">
+                    <div class="next-match-card bg-white rounded-xl shadow-md overflow-hidden animate-on-scroll">
+                        <!-- Match Header - USA vs World XI -->
+                        <div class="p-6 sm:p-8 text-center text-gray-800">
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-12">USA vs World XI</h3>
+                            
+                            <!-- Teams and VS -->
+                            <div class="flex flex-col md:flex-row items-center justify-center mb-16">
+                                <!-- Team USA -->
+                                <div class="team text-center px-6 md:px-10 mb-8 md:mb-0">
+                                    <div class="team-logo-container mb-4 mx-auto bg-gray-100 rounded-full p-5 w-24 h-24 flex items-center justify-center">
+                                        <i class="fas fa-flag text-gray-800 text-3xl"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-800">Team USA</h4>
+                                    <p class="text-gray-500">Celebrity XI</p>
                                 </div>
                                 
-                                <h3 class="text-2xl sm:text-3xl font-bold mb-4">USA vs World XI</h3>
-                                <p class="text-gray-600 mb-6">
-                                    Exhibition Match - Global Celebrity Cricket League 2025
-                                </p>
-                                
-                                <div class="space-y-4 mb-8">
-                                    <div class="flex items-start">
-                                        <div class="text-primary-500 mt-1 mr-3">
-                                            <i class="fas fa-map-marker-alt"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-semibold">Venue</h4>
-                                            <p class="text-gray-600">Grand Cricket Stadium, Dallas, TX</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex items-start">
-                                        <div class="text-primary-500 mt-1 mr-3">
-                                            <i class="fas fa-clock"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-semibold">Match Time</h4>
-                                            <p class="text-gray-600">7:00 PM CST</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="flex items-start">
-                                        <div class="text-primary-500 mt-1 mr-3">
-                                            <i class="fas fa-ticket-alt"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-semibold">Ticket Price</h4>
-                                            <p class="text-gray-600">Starting from $25</p>
-                                        </div>
+                                <!-- VS and coming soon -->
+                                <div class="versus-container text-center px-8 mb-8 md:mb-0 flex flex-col items-center">
+                                    <div class="text-5xl font-light text-gray-300 mb-5">VS</div>
+                                    <div class="coming-soon bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm font-medium">
+                                        <i class="far fa-clock mr-2"></i> Coming Soon
                                     </div>
                                 </div>
                                 
-                                <div class="flex flex-col sm:flex-row gap-4">
-                                    <a
-                                        href="#"
-                                        class="btn btn-primary px-6 py-3 rounded-md inline-flex items-center justify-center transition-all duration-300"
-                                    >
-                                        <i class="fas fa-ticket-alt mr-2"></i>
-                                        Get Tickets
-                                    </a>
-                                    
-                                    <a
-                                        href="#"
-                                        class="btn btn-outline px-6 py-3 rounded-md inline-flex items-center justify-center transition-all duration-300"
-                                    >
-                                        <i class="far fa-calendar-plus mr-2"></i>
-                                        Add to Calendar
-                                    </a>
+                                <!-- World XI -->
+                                <div class="team text-center px-6 md:px-10">
+                                    <div class="team-logo-container mb-4 mx-auto bg-gray-100 rounded-full p-5 w-24 h-24 flex items-center justify-center">
+                                        <i class="fas fa-globe text-gray-800 text-3xl"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-800">World XI</h4>
+                                    <p class="text-gray-500">Celebrity XI</p>
                                 </div>
                             </div>
                             
-                            <!-- Teams -->
-                            <div class="bg-gradient-to-br from-primary-500 to-primary-700 text-white p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
-                                <div class="teams-container">
-                                    <div class="flex items-center justify-between mb-8">
-                                        <div class="team text-center">
-                                            <div class="team-logo-container mb-4 mx-auto">
-                                                <img
-                                                    src="./assets/logos/usa-team.png"
-                                                    alt="USA Team"
-                                                    class="team-logo h-20 w-20 object-contain mx-auto"
-                                                />
-                                            </div>
-                                            <h4 class="text-xl font-bold">USA</h4>
-                                            <p class="text-gray-200">Celebrity XI</p>
-                                        </div>
-                                        
-                                        <div class="versus-container text-center px-4">
-                                            <div class="text-4xl font-bold mb-2">VS</div>
-                                            <div class="countdown-timer text-sm">
-                                                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
-                                                    Coming Soon
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="team text-center">
-                                            <div class="team-logo-container mb-4 mx-auto">
-                                                <img
-                                                    src="./assets/logos/world-xi-team.png"
-                                                    alt="World XI Team"
-                                                    class="team-logo h-20 w-20 object-contain mx-auto"
-                                                />
-                                            </div>
-                                            <h4 class="text-xl font-bold">World XI</h4>
-                                            <p class="text-gray-200">Celebrity XI</p>
-                                        </div>
+                            <!-- Match Details in a grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-3xl mx-auto">
+                                <!-- Venue -->
+                                <div class="flex items-start p-4 rounded-lg bg-gray-50">
+                                    <div class="mt-1 mr-3 text-gray-500">
+                                        <i class="fas fa-map-marker-alt"></i>
                                     </div>
-                                    
-                                    <div class="featured-players">
-                                        <h4 class="text-lg font-semibold mb-4 text-center">Featured Players</h4>
-                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                                            <div class="player text-center">
-                                                <div class="player-avatar mx-auto mb-2 w-12 h-12 rounded-full overflow-hidden border-2 border-white">
-                                                    <img
-                                                        src="./assets/images/player-1.jpg"
-                                                        alt="Player 1"
-                                                        class="w-full h-full object-cover"
-                                                    />
-                                                </div>
-                                                <p class="text-sm font-medium">John D.</p>
-                                            </div>
-                                            
-                                            <div class="player text-center">
-                                                <div class="player-avatar mx-auto mb-2 w-12 h-12 rounded-full overflow-hidden border-2 border-white">
-                                                    <img
-                                                        src="./assets/images/player-2.jpg"
-                                                        alt="Player 2"
-                                                        class="w-full h-full object-cover"
-                                                    />
-                                                </div>
-                                                <p class="text-sm font-medium">Mike S.</p>
-                                            </div>
-                                            
-                                            <div class="player text-center">
-                                                <div class="player-avatar mx-auto mb-2 w-12 h-12 rounded-full overflow-hidden border-2 border-white">
-                                                    <img
-                                                        src="./assets/images/player-3.jpg"
-                                                        alt="Player 3"
-                                                        class="w-full h-full object-cover"
-                                                    />
-                                                </div>
-                                                <p class="text-sm font-medium">Raj P.</p>
-                                            </div>
-                                            
-                                            <div class="player text-center">
-                                                <div class="player-avatar mx-auto mb-2 w-12 h-12 rounded-full overflow-hidden border-2 border-white">
-                                                    <img
-                                                        src="./assets/images/player-4.jpg"
-                                                        alt="Player 4"
-                                                        class="w-full h-full object-cover"
-                                                    />
-                                                </div>
-                                                <p class="text-sm font-medium">Ali K.</p>
-                                            </div>
-                                        </div>
+                                    <div class="text-left">
+                                        <h4 class="font-semibold text-gray-800">Venue</h4>
+                                        <p class="text-gray-600">Grand Cricket Stadium, Dallas, TX</p>
                                     </div>
                                 </div>
+                                
+                                <!-- Ticket Price -->
+                                <div class="flex items-start p-4 rounded-lg bg-gray-50">
+                                    <div class="mt-1 mr-3 text-gray-500">
+                                        <i class="fas fa-ticket-alt"></i>
+                                    </div>
+                                    <div class="text-left">
+                                        <h4 class="font-semibold text-gray-800">Ticket Price</h4>
+                                        <p class="text-gray-600">Starting from $25</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Match Time -->
+                                <div class="flex items-start p-4 rounded-lg bg-gray-50">
+                                    <div class="mt-1 mr-3 text-gray-500">
+                                        <i class="far fa-clock"></i>
+                                    </div>
+                                    <div class="text-left">
+                                        <h4 class="font-semibold text-gray-800">Match Time</h4>
+                                        <p class="text-gray-600">7:00 PM CST</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Live Broadcast -->
+                                <div class="flex items-start p-4 rounded-lg bg-gray-50">
+                                    <div class="mt-1 mr-3 text-gray-500">
+                                        <i class="fas fa-broadcast-tower"></i>
+                                    </div>
+                                    <div class="text-left">
+                                        <h4 class="font-semibold text-gray-800">Live Broadcast</h4>
+                                        <p class="text-gray-600">ESPN+ and GCCL Official Website</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Buttons -->
+                            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+                                <a href="#" class="ticket-btn border border-gray-200 hover:border-gray-300 text-gray-800 px-6 py-3 rounded-md inline-flex items-center justify-center transition-all duration-300">
+                                    Get Tickets
+                                </a>
+                                
+                                <a href="#" class="calendar-btn border border-gray-200 hover:border-gray-300 text-gray-800 px-6 py-3 rounded-md inline-flex items-center justify-center transition-all duration-300">
+                                    <i class="far fa-calendar-plus mr-2"></i>
+                                    Add to Calendar
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="text-center mt-12 sm:mt-16 animate-on-scroll">
-                    <a
-                        href="matches.html"
-                        class="btn btn-secondary px-8 py-3 rounded-md inline-flex items-center justify-center transition-all duration-300"
-                    >
+                    <a href="#" class="inline-flex items-center text-gray-600 hover:text-gray-800 font-medium">
                         View All Matches
-                        <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
             </div>
@@ -213,7 +135,7 @@ function setupNextMatchAnimations() {
     if (nextMatchCard) {
         nextMatchCard.addEventListener('mouseenter', () => {
             nextMatchCard.style.transform = 'translateY(-5px)';
-            nextMatchCard.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+            nextMatchCard.style.boxShadow = '0 15px 30px -10px rgba(0, 0, 0, 0.1)';
         });
 
         nextMatchCard.addEventListener('mouseleave', () => {
@@ -223,70 +145,36 @@ function setupNextMatchAnimations() {
     }
 
     // Team logo hover effects
-    const teamLogos = document.querySelectorAll('.team-logo');
-
+    const teamLogos = document.querySelectorAll('.team-logo-container');
     teamLogos.forEach(logo => {
         logo.addEventListener('mouseenter', () => {
-            logo.style.transform = 'scale(1.1) rotate(5deg)';
+            logo.style.transform = 'scale(1.05)';
         });
-
+        
         logo.addEventListener('mouseleave', () => {
-            logo.style.transform = 'scale(1) rotate(0)';
+            logo.style.transform = 'scale(1)';
         });
     });
-
-    // Player avatar hover effects
-    const playerAvatars = document.querySelectorAll('.player-avatar');
-
-    playerAvatars.forEach(avatar => {
-        avatar.addEventListener('mouseenter', () => {
-            avatar.style.transform = 'scale(1.1)';
-            avatar.style.borderColor = 'var(--color-primary-light)';
-        });
-
-        avatar.addEventListener('mouseleave', () => {
-            avatar.style.transform = 'scale(1)';
-            avatar.style.borderColor = 'white';
-        });
-    });
-
-    // Button hover effects
-    const buttons = document.querySelectorAll('.next-match-section .btn');
-
+    
+    // Button hover animation
+    const buttons = document.querySelectorAll('.next-match-section a.ticket-btn, .next-match-section a.calendar-btn');
     buttons.forEach(button => {
         button.addEventListener('mouseenter', () => {
-            button.style.transform = 'translateY(-3px)';
+            button.style.transform = 'translateY(-2px)';
+            button.style.backgroundColor = '#f9fafb';
         });
-
+        
         button.addEventListener('mouseleave', () => {
             button.style.transform = 'translateY(0)';
+            button.style.backgroundColor = '';
         });
     });
-
-    // Set up animation for elements with animate-on-scroll class if not already handled by main.js
-    if (!window.animationObserverInitialized) {
-        const animateElements = document.querySelectorAll('.animate-on-scroll:not(.animated)');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        // Set initial state for animated elements
-        animateElements.forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(element);
-        });
-    }
 }
+
+// Export the render function for use in main.js
+window.renderNextMatchSection = function() {
+    createNextMatchSection();
+};
 
 // Initialize the next match section
 document.addEventListener('DOMContentLoaded', createNextMatchSection); 

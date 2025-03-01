@@ -188,4 +188,178 @@ window.addEventListener('load', () => {
             loadingScreen.style.display = 'none';
         }, 500);
     }
-}); 
+});
+
+// Main JavaScript file for initializing all components
+
+// Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initApp();
+});
+
+function initApp() {
+    // Display loading screen
+    showLoadingScreen();
+    
+    // Initialize all sections after assets are loaded
+    window.addEventListener('load', function() {
+        // Hide loading screen after a minimum display time (for better UX)
+        setTimeout(function() {
+            hideLoadingScreen();
+            initializeSections();
+            initializeAnimations();
+            initializeResponsiveness();
+        }, 1500);
+    });
+}
+
+function showLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        loadingScreen.style.display = 'flex';
+    }
+}
+
+function hideLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        loadingScreen.classList.add('opacity-0');
+        setTimeout(function() {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }
+}
+
+function initializeSections() {
+    // Initialize header
+    if (typeof window.renderHeader === 'function') {
+        window.renderHeader();
+    }
+    
+    // Initialize hero section
+    if (typeof window.renderHeroSection === 'function') {
+        window.renderHeroSection();
+    }
+    
+    // Initialize about section
+    if (typeof window.renderAboutSection === 'function') {
+        window.renderAboutSection();
+    }
+    
+    // Initialize video section
+    if (typeof window.renderVideoSection === 'function') {
+        window.renderVideoSection();
+    }
+    
+    // Initialize participants section
+    if (typeof window.renderParticipantsSection === 'function') {
+        window.renderParticipantsSection();
+    }
+    
+    // Initialize promoters section
+    if (typeof window.renderPromotersSection === 'function') {
+        window.renderPromotersSection();
+    }
+    
+    // Initialize next match section
+    if (typeof window.renderNextMatchSection === 'function') {
+        window.renderNextMatchSection();
+    }
+    
+    // Initialize contact section
+    if (typeof window.renderContactSection === 'function') {
+        window.renderContactSection();
+    }
+    
+    // Initialize footer
+    if (typeof window.renderFooter === 'function') {
+        window.renderFooter();
+    }
+}
+
+function initializeAnimations() {
+    // Initialize AOS (Animate On Scroll) if it exists
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true
+        });
+    }
+    
+    // Initialize intersection observer for custom animations
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    
+    if (animateElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
+}
+
+function initializeResponsiveness() {
+    // Handle mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    }
+    
+    // Handle header scroll effects
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header-fixed');
+        if (header) {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+                header.classList.remove('header-transparent');
+            } else {
+                header.classList.remove('header-scrolled');
+                header.classList.add('header-transparent');
+            }
+        }
+    });
+    
+    // Handle responsive behavior for video players
+    const videoContainers = document.querySelectorAll('.video-container');
+    if (videoContainers.length > 0) {
+        window.addEventListener('resize', resizeVideoContainers);
+        resizeVideoContainers();
+    }
+    
+    // Add viewport height fix for mobile browsers
+    setMobileVH();
+    window.addEventListener('resize', setMobileVH);
+}
+
+function resizeVideoContainers() {
+    const videoContainers = document.querySelectorAll('.video-container');
+    videoContainers.forEach(container => {
+        const width = container.offsetWidth;
+        // Maintain 16:9 aspect ratio
+        container.style.height = (width * 9 / 16) + 'px';
+    });
+}
+
+function setMobileVH() {
+    // Fix for mobile viewport height
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Export functions if needed for other scripts
+window.showLoadingScreen = showLoadingScreen;
+window.hideLoadingScreen = hideLoadingScreen; 

@@ -1,158 +1,148 @@
 // Hero Section component
 function createHeroSection() {
     const heroSection = document.createElement('section');
-    heroSection.id = 'home';
-    heroSection.classList.add('hero-section', 'relative');
+    heroSection.className = 'hero-section relative w-full h-screen flex items-center justify-center overflow-hidden';
+    heroSection.id = 'hero-section';
+
+    // Create video element for background
+    const video = document.createElement('video');
+    video.className = 'hero-video absolute inset-0 object-cover w-full h-full';
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true; // Important for mobile (especially iOS)
+    video.preload = 'auto';
+    video.poster = 'assets/images/backgrounds/hero-poster.jpg'; // Use a placeholder image while video loads
     
-    // Updated hero section with video background and modern design
-    heroSection.innerHTML = `
-        <!-- Fallback Background (in case video doesn't work) -->
-        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 opacity-95 z-0"></div>
-        
-        <!-- Video Overlay will be added above the video -->
-        <div class="video-overlay bg-black/30"></div>
-        
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 bg-pattern opacity-10 z-20"></div>
-        
-        <div class="container mx-auto px-4 py-8 relative z-30">
-            <div class="hero-content flex flex-col items-center text-center">
-                <!-- Logo with animation -->
-                <div class="mb-8 hero-logo transform transition-all duration-500 hover:scale-105" data-aos="fade-down" data-aos-delay="200">
-                    <img src="assets/logos/logo_gccl.png" alt="GCCL Logo" class="w-40 md:w-60 mx-auto drop-shadow-2xl">
-                </div>
-                
-                <!-- Hero Title and Description -->
-                <div class="text-center mb-10" data-aos="fade-up" data-aos-delay="300">
-                    <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
-                        Global Cricket <span class="text-yellow-400">Champions League</span>
-                    </h1>
-                    <p class="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow-xl">
-                        Experience the excitement of celebrity cricket matches featuring stars from around the world competing for glory.
-                    </p>
-                </div>
-                
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row gap-6 mb-16" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#videos" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-10 py-4 rounded-lg font-semibold shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center border border-white/20">
-                        <i class="fas fa-play-circle mr-2"></i> Watch Videos
-                    </a>
-                    <a href="#participants" class="bg-transparent border-2 border-white text-white hover:bg-white/20 px-10 py-4 rounded-lg font-semibold shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center">
-                        <i class="fas fa-users mr-2"></i> View Participants
-                    </a>
-                </div>
-                
-                <!-- Next Match Card with enhanced styling -->
-                <div class="hero-card bg-white/15 backdrop-blur-md rounded-xl shadow-2xl p-8 max-w-2xl w-full border border-white/10" data-aos="fade-up" data-aos-delay="500">
-                    <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                        <i class="fas fa-calendar-alt text-yellow-400 mr-3"></i> Next Match
-                    </h3>
-                    <div class="flex flex-col md:flex-row items-center justify-between">
-                        <div class="team-info flex items-center mb-4 md:mb-0">
-                            <img src="assets/logos/usa-team.png" alt="USA Team" class="w-16 h-16 object-contain">
-                            <div class="ml-3">
-                                <p class="font-bold text-white text-lg">USA</p>
-                                <p class="text-gray-300">Celebrity Team</p>
-                            </div>
-                        </div>
-                        
-                        <div class="match-details text-center px-4">
-                            <div class="text-yellow-400 font-bold text-2xl">VS</div>
-                            <div class="text-gray-300 mt-1">August, 2023</div>
-                            <div class="bg-primary/20 text-white rounded-full px-4 py-1 text-xs font-medium mt-2 backdrop-blur-sm">
-                                New York Stadium
-                            </div>
-                        </div>
-                        
-                        <div class="team-info flex items-center mt-4 md:mt-0">
-                            <div class="mr-3 text-right">
-                                <p class="font-bold text-white text-lg">World XI</p>
-                                <p class="text-gray-300">Celebrity Team</p>
-                            </div>
-                            <img src="assets/logos/world-xi-team.png" alt="World XI Team" class="w-16 h-16 object-contain">
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 text-center">
-                        <a href="#tickets" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-3 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg">
-                            <i class="fas fa-ticket-alt mr-2"></i> Get Tickets
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Scrolling indicator -->
-        <div class="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce z-30">
-            <a href="#about" class="text-white opacity-75 hover:opacity-100 transition-opacity bg-white/10 p-3 rounded-full backdrop-blur-sm">
-                <i class="fas fa-chevron-down text-2xl"></i>
-            </a>
-        </div>
-    `;
+    // Add source for the video
+    const source = document.createElement('source');
+    source.src = 'assets/video/gccl_intro.mp4';
+    source.type = 'video/mp4';
     
+    video.appendChild(source);
+    
+    // Add error handling for video
+    video.addEventListener('error', () => {
+        console.error('Video error occurred');
+        video.style.display = 'none';
+    });
+    
+    // Make sure video is visible once loaded
+    video.addEventListener('loadeddata', () => {
+        video.style.opacity = '1';
+    });
+    
+    // Create the video overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'video-overlay absolute inset-0 bg-black/30 z-5';
+
+    // Create content container
+    const contentContainer = document.createElement('div');
+    contentContainer.className = 'container relative z-40 mx-auto px-4 text-center';
+
+    // Create hero content
+    const heroContent = document.createElement('div');
+    heroContent.className = 'hero-content flex flex-col items-center justify-center gap-6 md:gap-8';
+
+    // Add logo
+    const logoContainer = document.createElement('div');
+    logoContainer.className = 'mb-2 md:mb-4';
+    
+    const logo = document.createElement('img');
+    logo.src = 'assets/logos/logo_gccl.png';
+    logo.alt = 'GCCL Logo';
+    logo.className = 'hero-logo w-24 md:w-32 lg:w-40 mx-auto';
+    
+    logoContainer.appendChild(logo);
+
+    // Add title
+    const title = document.createElement('h1');
+    title.className = 'hero-title text-white font-bold mb-4 md:mb-6';
+    title.textContent = 'Global Celebrity Cricket League';
+
+    // Add subtitle
+    const subtitle = document.createElement('p');
+    subtitle.className = 'text-white/90 text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto mb-6 md:mb-8';
+    subtitle.textContent = 'Where Stars Shine Beyond the Silver Screen';
+
+    // Add CTA buttons container
+    const ctaContainer = document.createElement('div');
+    ctaContainer.className = 'flex flex-col sm:flex-row justify-center items-center gap-4';
+
+    // Add primary CTA button
+    const primaryCta = document.createElement('a');
+    primaryCta.href = '#next-match-section';
+    primaryCta.className = 'btn btn-primary px-6 py-3 rounded-lg hover:shadow-lg transition duration-300';
+    primaryCta.textContent = 'Next Match';
+
+    // Add secondary CTA button
+    const secondaryCta = document.createElement('a');
+    secondaryCta.href = '#participants-section';
+    secondaryCta.className = 'btn btn-outline bg-white/10 border-2 border-white/80 text-white px-6 py-3 rounded-lg hover:bg-white hover:text-primary transition duration-300';
+    secondaryCta.textContent = 'Meet the Stars';
+
+    // Append buttons to container
+    ctaContainer.appendChild(primaryCta);
+    ctaContainer.appendChild(secondaryCta);
+
+    // Append elements to hero content
+    heroContent.appendChild(logoContainer);
+    heroContent.appendChild(title);
+    heroContent.appendChild(subtitle);
+    heroContent.appendChild(ctaContainer);
+
+    // Append hero content to content container
+    contentContainer.appendChild(heroContent);
+
+    // Add a bounce down indicator at the bottom
+    const scrollIndicator = document.createElement('div');
+    scrollIndicator.className = 'absolute bottom-10 left-1/2 transform -translate-x-1/2 z-40 animate-bounce cursor-pointer';
+    scrollIndicator.innerHTML = '<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>';
+    
+    // Add scroll indicator click event
+    scrollIndicator.addEventListener('click', () => {
+        document.querySelector('#about-section-container').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+
+    // Append all elements to the hero section
+    heroSection.appendChild(video);
+    heroSection.appendChild(overlay);
+    heroSection.appendChild(contentContainer);
+    heroSection.appendChild(scrollIndicator);
+
     return heroSection;
 }
 
 function renderHeroSection() {
-    const mainElement = document.querySelector('main');
-    if (mainElement) {
-        mainElement.prepend(createHeroSection());
+    const container = document.getElementById('hero-section-container');
+    if (container) {
+        container.appendChild(createHeroSection());
         
-        // Programmatically create and add video element
-        const heroSection = document.querySelector('.hero-section');
-        if (heroSection) {
-            // Create video element with higher z-index
-            const videoElement = document.createElement('video');
-            videoElement.className = 'hero-video';
-            videoElement.autoplay = true;
-            videoElement.muted = true;
-            videoElement.loop = true;
-            videoElement.playsInline = true;
-            videoElement.preload = 'auto';
-            videoElement.style.zIndex = '1';
-            
-            // Create source element
-            const sourceElement = document.createElement('source');
-            sourceElement.src = 'assets/video/gccl_intro.mp4';
-            sourceElement.type = 'video/mp4';
-            
-            // Add source to video
-            videoElement.appendChild(sourceElement);
-            
-            // Add fallback text
-            videoElement.innerHTML += 'Your browser does not support the video tag.';
-            
-            // Insert video as first child of hero section (before the overlay)
-            heroSection.insertBefore(videoElement, heroSection.firstChild);
-            
-            // Add event listeners
-            videoElement.addEventListener('loadeddata', () => {
-                console.log('Video loaded successfully');
-                // Make sure to show it by setting opacity
-                videoElement.style.opacity = '1';
-            });
-            
-            videoElement.addEventListener('playing', () => {
-                console.log('Video is now playing');
-            });
-            
-            videoElement.addEventListener('error', (e) => {
-                console.error('Video error:', e);
-                videoElement.style.display = 'none';
-            });
-            
-            // Force video to play
-            videoElement.load();
-            setTimeout(() => {
-                const playPromise = videoElement.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.error('Autoplay prevented:', error);
-                    });
-                }
-            }, 100);
-        }
+        // Initialize scroll animations for hero section elements
+        initScrollAnimations();
     }
 }
 
-renderHeroSection(); 
+function initScrollAnimations() {
+    // Add scroll animations to elements
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    animateElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Export the function for use in main.js
+window.renderHeroSection = renderHeroSection; 

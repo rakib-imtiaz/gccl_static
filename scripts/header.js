@@ -84,11 +84,14 @@ function createHeader() {
     
     header.innerHTML = headerContent;
     
-    // Add scroll event to change header style on scroll
-    document.addEventListener('DOMContentLoaded', () => {
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
+    return header;
+}
+
+function setupHeaderInteractions(header) {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (menuToggle && mobileMenu) {
         // Toggle mobile menu
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
@@ -98,41 +101,53 @@ function createHeader() {
                 menuToggle.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
             }
         });
-        
-        // Add scroll effect to header
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-                header.classList.add('shadow-md');
-            } else {
-                header.classList.remove('header-scrolled');
-                header.classList.remove('shadow-md');
-            }
-        });
-        
-        // Add hover effect to nav items
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                item.querySelector('a').classList.add('text-yellow-400');
-            });
-            
-            item.addEventListener('mouseleave', () => {
-                if (!item.querySelector('a').classList.contains('active')) {
-                    item.querySelector('a').classList.remove('text-yellow-400');
-                }
-            });
-        });
+    }
+    
+    // Add scroll effect to header
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('header-scrolled');
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('header-scrolled');
+            header.classList.remove('shadow-md');
+        }
     });
     
-    return header;
+    // Add hover effect to nav items
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.querySelector('a').classList.add('text-yellow-400');
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            if (!item.querySelector('a').classList.contains('active')) {
+                item.querySelector('a').classList.remove('text-yellow-400');
+            }
+        });
+    });
 }
 
 function renderHeader() {
     const headerContainer = document.getElementById('header-container');
     if (headerContainer) {
-        headerContainer.appendChild(createHeader());
+        const header = createHeader();
+        headerContainer.appendChild(header);
+        
+        // Setup interactions immediately after adding to DOM
+        setupHeaderInteractions(header);
     }
 }
 
-renderHeader(); 
+// Initialize the header when the script loads
+window.renderHeader = renderHeader;
+
+// Auto-initialize the header if we're not using the main.js initialization
+if (document.readyState === "complete" || document.readyState === "interactive") {
+    // DOM already loaded, initialize immediately
+    setTimeout(renderHeader, 1);
+} else {
+    // Wait for DOM to load
+    document.addEventListener("DOMContentLoaded", renderHeader);
+} 

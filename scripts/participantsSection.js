@@ -1,211 +1,288 @@
 // Participants Section Component
 function createParticipantsSection() {
-    const participantsSectionContainer = document.getElementById('participants-section-container');
+    const section = document.createElement('section');
+    section.id = 'participants-section';
+    section.className = 'py-20 bg-gray-900 text-white';
 
-    if (!participantsSectionContainer) return;
+    const container = document.createElement('div');
+    container.className = 'container mx-auto px-4';
 
-    const participantsSectionHTML = `
-        <section class="participants-section py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-indigo-100 to-purple-100">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12 sm:mb-16">
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 animate-on-scroll">2023 Participants</h2>
-                    <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto animate-on-scroll">
-                        The inaugural GCCL event featured celebrity cricket stars from India and Pakistan in Dallas, Texas.
-                    </p>
-                    <div class="mt-4 inline-block px-6 py-2 bg-indigo-700 text-white rounded-full font-semibold animate-on-scroll">
-                        <span class="mr-2">GCCL SLOGAN:</span>
-                        <span class="italic">"Give Battle, Compete, Conduct & Land"</span>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
-                    <!-- Team India Section -->
-                    <div class="team-section animate-on-scroll">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                            <div class="p-6 text-center border-b border-gray-200 flex items-center justify-center">
-                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png" alt="India Flag" class="h-8 mr-3">
-                                <div>
-                                    <h3 class="text-2xl sm:text-3xl font-bold text-indigo-800">Team India</h3>
-                                    <p class="text-gray-600">2023 Runners-up</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Swiper for Team India -->
-                            <div class="swiper indiaSwiper">
-                                <div class="swiper-wrapper">
-                                    <!-- India Player 1 -->
-                                    <div class="swiper-slide">
-                                        <div class="aspect-[3/4] relative overflow-hidden">
-                                            <img src="https://media.gettyimages.com/id/908156394/photo/shah-rukh-khan-during-the-kolkata-knight-riders-team-celebration-at-eden-gardens-in-kolkata.jpg?s=612x612&w=0&k=20&c=lU-6JdJUn5BkF3vFcdXVXM-ZDZh4Ou1nRO9JgE5N13c=" alt="Shah Rukh Khan" class="absolute inset-0 w-full h-full object-cover">
-                                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/80 flex items-end justify-center">
-                                                <div class="text-center p-4">
-                                                    <h4 class="text-xl font-bold text-white">Shah Rukh Khan</h4>
-                                                    <p class="text-blue-200">Actor & KKR Owner</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- India Player 2 -->
-                                    <div class="swiper-slide">
-                                        <div class="aspect-[3/4] relative overflow-hidden">
-                                            <img src="https://media.gettyimages.com/id/1235866976/photo/kapil-sharma-during-promotions-of-a-web-series-at-jw-marriott-juhu-on-february-28-2021-in.jpg?s=612x612&w=0&k=20&c=EbOxPKlMtGUaYGvYaNnJQJT-aIRvynZF9QiVYN3XGR8=" alt="Kapil Sharma" class="absolute inset-0 w-full h-full object-cover">
-                                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/80 flex items-end justify-center">
-                                                <div class="text-center p-4">
-                                                    <h4 class="text-xl font-bold text-white">Kapil Sharma</h4>
-                                                    <p class="text-blue-200">Comedian & Cricket Fan</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- India Player 3 -->
-                                    <div class="swiper-slide">
-                                        <div class="aspect-[3/4] relative overflow-hidden">
-                                            <img src="https://media.gettyimages.com/id/1345800709/photo/ms-dhoni-poses-during-chennai-super-kings-official-team-photocall-at-the-taj-west-end-hotel-on.jpg?s=612x612&w=0&k=20&c=HWd8dHJqsH_-Gb4aBRuHzOWPV0iXlBQcahrXi5vKLRY=" alt="MS Dhoni" class="absolute inset-0 w-full h-full object-cover">
-                                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/80 flex items-end justify-center">
-                                                <div class="text-center p-4">
-                                                    <h4 class="text-xl font-bold text-white">MS Dhoni</h4>
-                                                    <p class="text-blue-200">Former Indian Captain</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-pagination"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Team Pakistan Section -->
-                    <div class="team-section animate-on-scroll">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                            <div class="p-6 text-center border-b border-gray-200 flex items-center justify-center">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Flag_of_Pakistan.svg/1200px-Flag_of_Pakistan.svg.png" alt="Pakistan Flag" class="h-8 mr-3">
-                                <div>
-                                    <h3 class="text-2xl sm:text-3xl font-bold text-green-800">Team Pakistan</h3>
-                                    <p class="text-gray-600">2023 Champions</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Swiper for Team Pakistan -->
-                            <div class="swiper pakistanSwiper">
-                                <div class="swiper-wrapper">
-                                    <!-- Pakistan Player 1 -->
-                                    <div class="swiper-slide">
-                                        <div class="aspect-[3/4] relative overflow-hidden">
-                                            <img src="https://media.gettyimages.com/id/1370422665/photo/actor-humayun-saeed-pictured-at-a-press-conference-in-karachi-on-january-19-2022.jpg?s=612x612&w=0&k=20&c=0QSsUMDJ2mAaZtw_dBLRCngRPz2ZxGyujcCdm9fWiUc=" alt="Humayun Saeed" class="absolute inset-0 w-full h-full object-cover">
-                                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-green-900/80 flex items-end justify-center">
-                                                <div class="text-center p-4">
-                                                    <h4 class="text-xl font-bold text-white">Humayun Saeed</h4>
-                                                    <p class="text-green-200">Actor & Cricketer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Pakistan Player 2 -->
-                                    <div class="swiper-slide">
-                                        <div class="aspect-[3/4] relative overflow-hidden">
-                                            <img src="https://media.gettyimages.com/id/1237946571/photo/pakistani-singer-atif-aslam-performs-in-a-concert-in-dhaka-on-february-15-2020.jpg?s=612x612&w=0&k=20&c=_BwAp-j-e6ZrMQ6UrOYJIPgF1A9x3r58sSwTmTWqFAU=" alt="Atif Aslam" class="absolute inset-0 w-full h-full object-cover">
-                                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-green-900/80 flex items-end justify-center">
-                                                <div class="text-center p-4">
-                                                    <h4 class="text-xl font-bold text-white">Atif Aslam</h4>
-                                                    <p class="text-green-200">Singer & Cricket Enthusiast</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Pakistan Player 3 -->
-                                    <div class="swiper-slide">
-                                        <div class="aspect-[3/4] relative overflow-hidden">
-                                            <img src="https://media.gettyimages.com/id/458121050/photo/shahid-afridi-of-pakistan-walks-through-the-room-during-a-press-conference-at-the-westin.jpg?s=612x612&w=0&k=20&c=h_JyCcCRbZuZxw8OmKsgEWu17vZz-R17jBqbBmwm4tM=" alt="Shahid Afridi" class="absolute inset-0 w-full h-full object-cover">
-                                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-green-900/80 flex items-end justify-center">
-                                                <div class="text-center p-4">
-                                                    <h4 class="text-xl font-bold text-white">Shahid Afridi</h4>
-                                                    <p class="text-green-200">Former Pakistan Captain</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-pagination"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center animate-on-scroll">
-                    <a href="#" class="inline-block px-8 py-3 bg-indigo-700 text-white rounded-lg font-bold hover:bg-indigo-800 transition-colors duration-300">
-                        View All Participants
-                    </a>
-                </div>
-            </div>
-        </section>
-    `;
-
-    // Set the HTML
-    participantsSectionContainer.innerHTML = participantsSectionHTML;
+    // Section header
+    const header = document.createElement('div');
+    header.className = 'text-center mb-16 animate-on-scroll';
     
-    // Initialize Swiper and setup animations
-    setupParticipantsSliders();
+    const sectionTitle = document.createElement('h2');
+    sectionTitle.className = 'text-4xl md:text-5xl font-bold mb-4';
+    sectionTitle.textContent = 'Celebrity Participants';
+    
+    const sectionDescription = document.createElement('p');
+    sectionDescription.className = 'text-xl text-gray-300 max-w-3xl mx-auto';
+    sectionDescription.textContent = 'Meet the stars who will be competing in the Global Celebrity Cricket League';
+    
+    header.appendChild(sectionTitle);
+    header.appendChild(sectionDescription);
+    
+    // Teams container
+    const teamsContainer = document.createElement('div');
+    teamsContainer.className = 'space-y-20';
+    
+    // Team data with real player images
+    const teams = [
+        {
+            name: 'Team India',
+            flag: 'assets/logos/usa-team.png',
+            players: [
+                {
+                    name: 'Virat Singh',
+                    role: 'Captain / Batsman',
+                    image: 'assets/images/players/indian_player.jpg'
+                },
+                {
+                    name: 'Rohit Kumar',
+                    role: 'Vice Captain / Bowler',
+                    image: 'assets/images/players/indian_player_2.jpg'
+                },
+                {
+                    name: 'Ajay Sharma',
+                    role: 'All-Rounder',
+                    image: 'assets/images/players/player_posing.jpg'
+                },
+                {
+                    name: 'Rahul Patel',
+                    role: 'Wicket Keeper',
+                    image: 'assets/images/players/player_interview.jpg'
+                },
+                {
+                    name: 'Sanjay Mishra',
+                    role: 'Fast Bowler',
+                    image: 'assets/images/players/player_smiling.jpg'
+                },
+                {
+                    name: 'Karan Khanna',
+                    role: 'Spin Bowler',
+                    image: 'assets/images/players/player_handshaking.jpg'
+                }
+            ]
+        },
+        {
+            name: 'Team Pakistan',
+            flag: 'assets/logos/world-xi-team.png',
+            players: [
+                {
+                    name: 'Asif Khan',
+                    role: 'Captain / All-Rounder',
+                    image: 'assets/images/players/player_standing_for_interview.jpg'
+                },
+                {
+                    name: 'Shahid Ahmed',
+                    role: 'Vice Captain / Batsman',
+                    image: 'assets/images/players/player_posing_2.jpg'
+                },
+                {
+                    name: 'Babar Ali',
+                    role: 'Fast Bowler',
+                    image: 'assets/images/players/player_interview_3.jpg'
+                },
+                {
+                    name: 'Younas Shah',
+                    role: 'Wicket Keeper',
+                    image: 'assets/images/players/player_interview_4.jpg'
+                },
+                {
+                    name: 'Kamran Akmal',
+                    role: 'Spin Bowler',
+                    image: 'assets/images/players/players_posing.jpg'
+                },
+                {
+                    name: 'Faisal Mahmood',
+                    role: 'Batsman',
+                    image: 'assets/images/players/IMG_8607.jpeg'
+                }
+            ]
+        }
+    ];
+    
+    // Create team sections
+    teams.forEach((team, teamIndex) => {
+        const teamSection = createTeamSection(team, teamIndex);
+        teamsContainer.appendChild(teamSection);
+    });
+    
+    // Append all elements
+    container.appendChild(header);
+    container.appendChild(teamsContainer);
+    section.appendChild(container);
+    
+    return section;
 }
 
-// Setup Swiper sliders and animations
-function setupParticipantsSliders() {
-    // Initialize India Team Swiper
-    const indiaSwiper = new Swiper('.indiaSwiper', {
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        loop: true,
-        pagination: {
-            el: '.indiaSwiper .swiper-pagination',
-            clickable: true,
-        },
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
+function createTeamSection(team, teamIndex) {
+    const teamSection = document.createElement('div');
+    teamSection.className = 'team-section animate-on-scroll';
+    teamSection.style.animationDelay = `${teamIndex * 200}ms`;
+    
+    // Team header
+    const teamHeader = document.createElement('div');
+    teamHeader.className = 'flex flex-col md:flex-row items-center justify-between mb-8 pb-4 border-b border-gray-700';
+    
+    // Team name and flag container
+    const teamInfo = document.createElement('div');
+    teamInfo.className = 'flex items-center mb-4 md:mb-0';
+    
+    // Team flag
+    const teamFlag = document.createElement('img');
+    teamFlag.src = team.flag;
+    teamFlag.alt = `${team.name} Flag`;
+    teamFlag.className = 'w-12 h-12 md:w-16 md:h-16 object-contain mr-4';
+    
+    // Team name
+    const teamName = document.createElement('h3');
+    teamName.className = 'text-2xl md:text-3xl font-bold';
+    teamName.textContent = team.name;
+    
+    teamInfo.appendChild(teamFlag);
+    teamInfo.appendChild(teamName);
+    
+    // Team stats
+    const teamStats = document.createElement('div');
+    teamStats.className = 'flex gap-6 text-gray-300 text-sm md:text-base';
+    
+    // Matches stat
+    const matchesStat = document.createElement('div');
+    matchesStat.className = 'flex flex-col items-center';
+    matchesStat.innerHTML = `
+        <span class="text-xl md:text-2xl font-bold text-white">${Math.floor(Math.random() * 5) + 3}</span>
+        <span>Matches</span>
+    `;
+    
+    // Wins stat
+    const winsStat = document.createElement('div');
+    winsStat.className = 'flex flex-col items-center';
+    winsStat.innerHTML = `
+        <span class="text-xl md:text-2xl font-bold text-white">${Math.floor(Math.random() * 3) + 1}</span>
+        <span>Wins</span>
+    `;
+    
+    // Rating stat
+    const ratingStat = document.createElement('div');
+    ratingStat.className = 'flex flex-col items-center';
+    ratingStat.innerHTML = `
+        <span class="text-xl md:text-2xl font-bold text-white">${(Math.random() * 2 + 3).toFixed(1)}</span>
+        <span>Rating</span>
+    `;
+    
+    teamStats.appendChild(matchesStat);
+    teamStats.appendChild(winsStat);
+    teamStats.appendChild(ratingStat);
+    
+    teamHeader.appendChild(teamInfo);
+    teamHeader.appendChild(teamStats);
+    
+    // Players grid
+    const playersGrid = document.createElement('div');
+    playersGrid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8';
+    
+    // Create player cards
+    team.players.forEach((player, playerIndex) => {
+        const playerCard = createPlayerCard(player, playerIndex);
+        playersGrid.appendChild(playerCard);
     });
+    
+    // Append all elements
+    teamSection.appendChild(teamHeader);
+    teamSection.appendChild(playersGrid);
+    
+    return teamSection;
+}
 
-    // Initialize Pakistan Team Swiper
-    const pakistanSwiper = new Swiper('.pakistanSwiper', {
-        autoplay: {
-            delay: 3500, // Slightly different timing for visual interest
-            disableOnInteraction: false,
-        },
-        loop: true,
-        pagination: {
-            el: '.pakistanSwiper .swiper-pagination',
-            clickable: true,
-        },
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
+function createPlayerCard(player, playerIndex) {
+    const playerCard = document.createElement('div');
+    playerCard.className = 'bg-gray-800 rounded-xl overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-xl';
+    playerCard.style.animationDelay = `${playerIndex * 100}ms`;
+    
+    // Player image container
+    const imageContainer = document.createElement('div');
+    imageContainer.className = 'h-64 overflow-hidden';
+    
+    // Player image
+    const playerImage = document.createElement('img');
+    playerImage.src = player.image;
+    playerImage.alt = player.name;
+    playerImage.className = 'w-full h-full object-cover object-top hover:scale-105 transition duration-500';
+    
+    imageContainer.appendChild(playerImage);
+    
+    // Player info
+    const playerInfo = document.createElement('div');
+    playerInfo.className = 'p-6';
+    
+    // Player name
+    const playerName = document.createElement('h4');
+    playerName.className = 'text-xl font-bold mb-1';
+    playerName.textContent = player.name;
+    
+    // Player role
+    const playerRole = document.createElement('p');
+    playerRole.className = 'text-gray-400 mb-3';
+    playerRole.textContent = player.role;
+    
+    // Social media links
+    const socialLinks = document.createElement('div');
+    socialLinks.className = 'flex gap-3';
+    
+    const socialPlatforms = [
+        { icon: 'fab fa-instagram', color: 'text-pink-500' },
+        { icon: 'fab fa-twitter', color: 'text-blue-400' },
+        { icon: 'fab fa-facebook-f', color: 'text-blue-600' }
+    ];
+    
+    socialPlatforms.forEach(platform => {
+        const link = document.createElement('a');
+        link.href = '#';
+        link.className = `${platform.color} hover:text-white transition duration-300`;
+        link.innerHTML = `<i class="${platform.icon}"></i>`;
+        socialLinks.appendChild(link);
     });
+    
+    // Append elements to player info
+    playerInfo.appendChild(playerName);
+    playerInfo.appendChild(playerRole);
+    playerInfo.appendChild(socialLinks);
+    
+    // Append all to player card
+    playerCard.appendChild(imageContainer);
+    playerCard.appendChild(playerInfo);
+    
+    return playerCard;
+}
 
-    // Add hover pause functionality
-    const swiperContainers = document.querySelectorAll('.swiper');
-    swiperContainers.forEach(container => {
-        container.addEventListener('mouseenter', () => {
-            const swiperInstance = container.swiper;
-            if (swiperInstance && swiperInstance.autoplay) {
-                swiperInstance.autoplay.stop();
-            }
-        });
+function renderParticipantsSection() {
+    const container = document.getElementById('participants-section-container');
+    if (container) {
+        container.appendChild(createParticipantsSection());
         
-        container.addEventListener('mouseleave', () => {
-            const swiperInstance = container.swiper;
-            if (swiperInstance && swiperInstance.autoplay) {
-                swiperInstance.autoplay.start();
+        // Initialize scroll animations
+        initParticipantsSectionAnimations();
+    }
+}
+
+function initParticipantsSectionAnimations() {
+    const animateElements = document.querySelectorAll('#participants-section .animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
             }
         });
+    }, {
+        threshold: 0.1
+    });
+    
+    animateElements.forEach(element => {
+        observer.observe(element);
     });
 }
 
-// Initialize the participants section when DOM content is loaded
-document.addEventListener('DOMContentLoaded', createParticipantsSection); 
+// Export the function for use in main.js
+window.renderParticipantsSection = renderParticipantsSection; 
