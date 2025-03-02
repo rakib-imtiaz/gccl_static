@@ -17,7 +17,7 @@ function createHeroSection() {
     // Add source for the video - using the new 3D intro with cache buster
     const source = document.createElement('source');
     source.src = 'assets/video/3d_intro_page_2.mp4?v=' + new Date().getTime(); // Add cache busting parameter
-    source.type = 'video/quicktime';
+    source.type = 'video/mp4';
     
     // Add fallback format for better browser compatibility
     const mp4Source = document.createElement('source');
