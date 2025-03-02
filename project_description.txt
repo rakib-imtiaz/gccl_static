@@ -84,38 +84,7 @@ Based on the analysis of the provided website screenshot:
    - `/media`: Fetch multimedia content (videos/podcasts).
    - `/shop`: Handle product listings and orders.
 
-2. **Database Schema**:
-   - MongoDB for storing player data, match schedules, and user information.
-
----
-
-### **Deployment**
-1. **Hosting**:
-   - Vercel for seamless Next.js deployment
-   - AWS/GCP/Azure for scalable backend
-   - Netlify for static site hosting
-
-2. **CI/CD**:
-   - Use GitHub Actions for automated testing and deployment
-   - Implement continuous integration and continuous deployment pipelines
-
----
-
 ### **Additional Requirements**
 1. **Responsive Design**:
    - Ensure the website is fully responsive across all devices.
    - Use Tailwind CSS for consistent styling.
-
-2. **Performance Optimization**:
-   - Implement lazy loading for images and scripts.
-   - Minimize server-side rendering to improve performance. 
-
----
-
-### **Documentation**
-1. **Project Documentation**:
-   - Create a README.md file with project setup instructions.
-   - Document all components and their functionalities.
-   - Provide clear instructions for setting up the development environment.
-
----
